@@ -4,8 +4,9 @@ import { useState, type FC, type FormEvent } from "react"
 import { Card } from "components/elements"
 import { Button, Form, Input } from "components/elements/form"
 import { TeamCard } from "components/modules/team-card"
+import { useTeamState } from "lib/store"
 
-const teams = [
+const teams: Team[] = [
   { id: 1, name: "東京住居" },
   { id: 2, name: "千代田区住宅管理" },
 ]
@@ -16,8 +17,10 @@ export const SiginIn: FC = () => {
     name?: string
     password?: string
   }>({})
+  const { setTeam } = useTeamState()
   const handleSignIn = (e: FormEvent) => {
     e.preventDefault()
+    setTeam(teams.find((t) => t.id == formInput.teamId))
   }
   return (
     <>

@@ -1,7 +1,7 @@
 import { FC } from "react"
 
 export const TeamCard: FC<{
-  team: { id: number; name: string }
+  team: Team
   isChecked?: boolean
   onCheck?: () => void
 }> = ({ team, isChecked, onCheck }) => {
