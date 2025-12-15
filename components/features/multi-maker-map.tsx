@@ -20,7 +20,7 @@ const MultiMarkerMap: FC<
         new LatLng(position.coords.latitude, position.coords.longitude)
       )
     })
-  }, [])
+  }, [markers])
   return (
     <div style={{ height: "100vw", maxHeight: "24rem", ...style }} {...props}>
       {position && (
