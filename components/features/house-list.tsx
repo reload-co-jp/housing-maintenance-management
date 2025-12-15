@@ -3,9 +3,27 @@
 import { type FC } from "react"
 import { Card } from "components/elements"
 import { Button } from "components/elements/form"
+const MultiMarkerMap = dynamic(
+  () => import("components/features/multi-maker-map"),
+  { ssr: false }
+)
+import dynamic from "next/dynamic"
 
 const houses: House[] = [
-  { id: 1, name: "秋葉原公共マンション", createdAt: new Date() },
+  {
+    id: 1,
+    name: "千代田テラス",
+    latitude: 35.6977788,
+    longitude: 139.775336,
+    createdAt: new Date(),
+  },
+  {
+    id: 2,
+    name: "山茂登ビル",
+    latitude: 35.6975756,
+    longitude: 139.7781256,
+    createdAt: new Date(),
+  },
 ]
 
 export const HouseList: FC<{ team: Team }> = ({ team }) => {
@@ -16,6 +34,7 @@ export const HouseList: FC<{ team: Team }> = ({ team }) => {
         <div>
           <Button>新規作成</Button>
         </div>
+        <MultiMarkerMap markers={houses} />
         <table>
           <tbody>
             {houses.map((house) => (
